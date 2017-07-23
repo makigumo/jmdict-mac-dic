@@ -20,7 +20,7 @@ Scripts to convert the JMDict XML file into an XML file suitable for Apple’s D
 ### Steps
 
 ```sh
-./build-saxon-sh
+./build-saxon.sh
 make
 make install
 ```
