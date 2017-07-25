@@ -64,9 +64,9 @@
                     </xsl:otherwise>
                 </xsl:choose>
 
-                <ul class="senses">
+                <ol class="senses">
                     <xsl:apply-templates select="sense"/>
-                </ul>
+                </ol>
 
             </div>
         </d:entry>
