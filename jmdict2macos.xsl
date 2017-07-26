@@ -108,6 +108,11 @@
 
     <xsl:template match="r_ele">
         <xsl:apply-templates select="reb"/>
+        <xsl:if test="re_restr">
+            <ul class="re_restrs">
+                <xsl:apply-templates select="re_restr"/>
+            </ul>
+        </xsl:if>
         <xsl:if test="following-sibling::r_ele">
             <xsl:text>; </xsl:text>
         </xsl:if>
@@ -168,6 +173,12 @@
             <ol class="glosses">
                 <xsl:apply-templates select="gloss"/>
             </ol>
+        </li>
+    </xsl:template>
+
+    <xsl:template match="re_restr">
+        <li class="re_restr">
+            <xsl:apply-templates/>
         </li>
     </xsl:template>
 
