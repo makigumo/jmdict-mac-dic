@@ -1,6 +1,6 @@
 #!/bin/sh -e
 SAXON=saxon9he.jar
-XML=/Volumes/Data/jmdict/JMDict_e
+XML=JMDict_e
 OUT=jmdict.xml
 XSL=jmdict2macos.xsl
 
