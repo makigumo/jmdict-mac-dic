@@ -1,16 +1,16 @@
 # JMDict for macOS 
 
-Scripts to convert the JMDict XML file into an XML file suitable for Apple’s Dictionary Development Kit.
+Scripts to convert the JMDict XML file into an XML file suitable for Apple’s Dictionary Development Kit (DDK).
 
 ## Install
 
 ### Requirements
 
-* DDK inside the `$HOME` directory.
+* DDK inside the `$HOME` directory (adjust in `Makefile`).
 * Java 8
-* [Saxon-HE](https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-3J.zip/download)
-    * Extract with `unzip SaxonHE9-8-0-3J.zip saxon9he.jar`.
-* JMDict file
+* [Saxon-HE](https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-4J.zip/download)
+    * `build-saxon-sh` will try to download it automatically.
+* JMDict file (use either method)
     * HTTP
         * Download `JMDict_e.gz` from a [mirror](http://ftp.monash.edu.au/pub/nihongo/00MIRRORS.html).
         * Extract with `gunzip`.
