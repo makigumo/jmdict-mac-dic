@@ -184,8 +184,17 @@
 
     <xsl:template match="gloss">
         <li class="gloss">
+            <xsl:if test="@g_type">
+                <xsl:apply-templates select="@g_type"/>
+            </xsl:if>
             <xsl:apply-templates/>
         </li>
+    </xsl:template>
+
+    <xsl:template match="gloss/@g_type">
+        <span class="gloss_type">
+            <xsl:value-of select="."/>
+        </span>
     </xsl:template>
 
     <xsl:template match="stagk">
