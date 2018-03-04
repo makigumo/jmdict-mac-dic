@@ -8,11 +8,14 @@ XSL=jmdict2macos.xsl
 if [ ! -e ${SAXON} ]; then
     echo "[!] Saxon not found. Trying to download."
     SAXON_ZIP=$(mktemp)
-    wget -q ${SAXONURL} -O ${SAXON_ZIP}
-    echo "[ ] Extracting."
-    unzip ${SAXON_ZIP} ${SAXON}
-    rm ${SAXON_ZIP}
-    echo "[+] Saxon is ready to use."
+    if wget -q ${SAXONURL} -O ${SAXON_ZIP} > /dev/null; then
+        echo "[ ] Extracting."
+        unzip ${SAXON_ZIP} ${SAXON}
+        rm ${SAXON_ZIP}
+        echo "[+] Saxon is ready to use."
+    else
+	echo "[-] Saxon download failed."
+    fi
 fi
 
 TMP_XML=$(mktemp)

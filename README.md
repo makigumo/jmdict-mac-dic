@@ -7,9 +7,9 @@ Scripts to convert the JMDict XML file into an XML file suitable for Apple’s D
 ### Requirements
 
 * DDK inside the `$HOME` directory (adjust in `Makefile`).
-* Java 8
-* [Saxon-HE](https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-4J.zip/download)
-    * `build-saxon-sh` will try to download it automatically.
+* Java 8+
+* [Saxon-HE](https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download)
+    * `build-saxon.sh` will try to download it automatically.
 * JMDict file (use either method)
     * HTTP
         * Download `JMDict_e.gz` from a [mirror](http://ftp.monash.edu.au/pub/nihongo/00MIRRORS.html).
