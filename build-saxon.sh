@@ -1,11 +1,11 @@
 #!/bin/sh -e
-SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download
+SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/SaxonHE9-9-0-2J.zip/download
 SAXON=saxon9he.jar
 XML=JMDict_e
 OUT=jmdict.xml
 XSL=jmdict2macos.xsl
 
-if [ ! -e ${SAXON} ]; then
+if [[ ! -e ${SAXON} ]]; then
     echo "[!] Saxon not found. Trying to download."
     SAXON_ZIP=$(mktemp)
     if wget -q ${SAXONURL} -O ${SAXON_ZIP} > /dev/null; then
@@ -14,7 +14,7 @@ if [ ! -e ${SAXON} ]; then
         rm ${SAXON_ZIP}
         echo "[+] Saxon is ready to use."
     else
-	echo "[-] Saxon download failed."
+    echo "[-] Saxon download failed."
     fi
 fi
 
