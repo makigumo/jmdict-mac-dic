@@ -1,0 +1,47 @@
+pool:
+  vmImage: 'macOS 10.13'
+
+steps:
+- script: |
+    git clone https://github.com/SebastianSzturo/Dictionary-Development-Kit.git "$HOME"/'Dictionary Development Kit'
+  displayName: 'Clone DDK'
+- script: |
+    ./rsync.sh
+  displayName: 'Rsync JMdict_e'
+- script: |
+    ./build-saxon.sh
+  displayName: 'Transform XML to Apple dictionary XML'
+- script: |
+    make
+  displayName: 'Build dictionary'
+- script: |
+    hdiutil create tmp.dmg -ov -volname "JMdict" -fs HFS+ -srcfolder "./objects/JMDict.dictionary"
+    hdiutil convert tmp.dmg -format UDZO -o JMdict.dmg
+  displayName: 'Package dictionary'
+- script: |
+    make clean
+    rm tmp.dmg
+  displayName: 'Cleanup'
+
+- task: CopyFiles@2
+  inputs:
+    contents: '**/*.dmg'
+    targetFolder: '$(build.artifactStagingDirectory)'
+#- task: PublishBuildArtifacts@1
+- task: GithubRelease@0
+  inputs:
+    gitHubConnection: makigumo
+    repositoryName: jmdict-macos
+    action: 'create' # Options: create, edit, discard
+    #target: '$(build.sourceVersion)' # Required when action == create || action == edit
+    tagSource: 'manual' # Required when action == create. Options: auto, manual
+    tag: '$(Build.BuildNumber)' # Required when action == edit || action == discard || tagSource == manual
+    #title: # Optional
+    #releaseNotesSource: 'file' # Optional. Options: file, input
+    #releaseNotesFile: # Optional
+    #releaseNotes: # Optional
+    assets: '$(build.artifactStagingDirectory)/*.dmg' # Optional
+    #assetUploadMode: 'delete' # Optional. Options: delete, replace
+    #isDraft: false # Optional
+    #isPreRelease: false # Optional
+    #addChangeLog: true # Optional
