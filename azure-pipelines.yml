@@ -1,6 +1,15 @@
 pool:
   vmImage: 'macOS 10.13'
 
+# don't trigger on tag creation
+# see https://docs.microsoft.com/ja-jp/azure/devops/pipelines/repos/github?view=vsts#trigger-builds-for-github-tags
+trigger:
+  branches:
+    include:
+      - master
+    exclude:
+      - refs/tags/*
+
 steps:
 - script: |
     git clone https://github.com/SebastianSzturo/Dictionary-Development-Kit.git "$HOME"/'Dictionary Development Kit'
@@ -27,7 +36,7 @@ steps:
   inputs:
     contents: '**/*.dmg'
     targetFolder: '$(build.artifactStagingDirectory)'
-#- task: PublishBuildArtifacts@1
+
 - task: GithubRelease@0
   inputs:
     gitHubConnection: makigumo
