@@ -1,5 +1,5 @@
 pool:
-  vmImage: 'macOS 10.13'
+  vmImage: 'macOS-10.14'
 
 # don't trigger on tag creation
 # see https://docs.microsoft.com/ja-jp/azure/devops/pipelines/repos/github?view=vsts#trigger-builds-for-github-tags
