@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>DCSDictionaryNativeDisplayName</key>
-	<string>Japanese-English</string>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.github.makigumo.jmdict.mac</string>
-	<key>CFBundleName</key>
-	<string>JMDict</string>
-	<key>CFBundleDisplayName</key>
-	<string>JMDict</string>
-	<key>CFBundleShortVersionString</key>
-	<string>2017.07.22</string>
-	<key>DCSDictionaryCopyright</key>
-	<string>© Copyright 2017, Electronic Dictionary Research and Development Group</string>
-	<key>DCSDictionaryManufacturerName</key>
-	<string>http://www.edrdg.org/</string>
-	<key>DCSDictionaryLanguages</key>
-	<array>
-		<dict>
-			<key>DCSDictionaryDescriptionLanguage</key>
-			<string>en</string>
-			<key>DCSDictionaryIndexLanguage</key>
-			<string>ja</string>
-		</dict>
-	</array>
-	<key>DCSDictionaryPrimaryLanguage</key>
-	<string>en</string>
-</dict>
+    <dict>
+        <key>DCSDictionaryNativeDisplayName</key>
+        <string>Japanese-English</string>
+        <key>CFBundleDevelopmentRegion</key>
+        <string>English</string>
+        <key>CFBundleIdentifier</key>
+        <string>com.github.makigumo.jmdict.mac</string>
+        <key>CFBundleName</key>
+        <string>JMDict</string>
+        <key>CFBundleDisplayName</key>
+        <string>JMDict</string>
+        <key>CFBundleShortVersionString</key>
+        <string>2017.07.22</string>
+        <key>DCSDictionaryCopyright</key>
+        <string>© Copyright 2017, Electronic Dictionary Research and Development Group</string>
+        <key>DCSDictionaryManufacturerName</key>
+        <string>http://www.edrdg.org/</string>
+        <key>DCSDictionaryLanguages</key>
+        <array>
+            <dict>
+                <key>DCSDictionaryDescriptionLanguage</key>
+                <string>en</string>
+                <key>DCSDictionaryIndexLanguage</key>
+                <string>ja</string>
+            </dict>
+        </array>
+        <key>DCSDictionaryPrimaryLanguage</key>
+        <string>en</string>
+        <key>DCSElementXPath</key>
+        <dict>
+            <key>pos</key>
+            <string>//span[contains(@class,&quot;pos&quot;)][1]</string>
+            <key>pronunciation</key>
+            <string>//h2[1]</string>
+            <key>definitions</key>
+            <string>//*[contains(@class,&quot;senses&quot;)][1]</string>
+        </dict>
+        <key>DCSDictionaryUseSystemAppearance</key>
+        <true/>
+    </dict>
 </plist>
+
