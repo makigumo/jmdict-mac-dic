@@ -21,6 +21,8 @@ html.apple_client-panel body {
     margin-top: 0em;
 }
 
+@media (prefers-dark-interface)
+{
     img {
         filter: invert(100%);
     }
@@ -174,9 +176,9 @@ ol, ul {
     display: inline;
     color: white;
     background-color: #d2b533;
-//    background-color: -apple-system-yellow;
+/*    background-color: -apple-system-yellow; */
     border-color: #d2b533;
-//    border-color: -apple-system-yellow;
+/*    border-color: -apple-system-yellow; */
 }
 
 .dial {
