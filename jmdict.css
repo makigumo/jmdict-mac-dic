@@ -96,6 +96,7 @@ ol, ul {
     */
 
     color: #2f4f4f;
+    color: -apple-system-label;
 }
 
 .glosses li + li:before {
