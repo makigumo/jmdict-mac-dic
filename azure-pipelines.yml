@@ -24,6 +24,9 @@ steps:
     make
   displayName: 'Build dictionary'
 - script: |
+      cat JMDict.plist.in | m4 -DYEAR=$(date +%Y) -DVERSION_DATE=$(date +%Y.%m.%d) > JMDict.plist
+  displayName: 'Prepare plist file'
+- script: |
     hdiutil create tmp.dmg -ov -volname "JMdict" -fs HFS+ -srcfolder "./objects/JMDict.dictionary"
     hdiutil convert tmp.dmg -format UDZO -o JMdict.dmg
   displayName: 'Package dictionary'

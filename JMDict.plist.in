@@ -13,9 +13,9 @@
         <key>CFBundleDisplayName</key>
         <string>JMDict</string>
         <key>CFBundleShortVersionString</key>
-        <string>2017.07.22</string>
+        <string>VERSION_DATE</string>
         <key>DCSDictionaryCopyright</key>
-        <string>© Copyright 2017, Electronic Dictionary Research and Development Group</string>
+        <string>© Copyright YEAR, Electronic Dictionary Research and Development Group</string>
         <key>DCSDictionaryManufacturerName</key>
         <string>http://www.edrdg.org/</string>
         <key>DCSDictionaryLanguages</key>
