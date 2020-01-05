@@ -1,5 +1,5 @@
 #!/bin/sh -e
-SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/SaxonHE9-9-0-6J.zip/download
+SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/SaxonHE9-9-1-6J.zip/download
 SAXON=saxon9he.jar
 XML=JMDict_e
 OUT=jmdict.xml
