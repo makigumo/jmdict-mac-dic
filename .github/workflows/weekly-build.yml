@@ -19,7 +19,7 @@ jobs:
         ./rsync.sh
     - name: Transform XML to Apple dictionary XML
       run: |
-        ./build_saxon.sh
+        ./build-saxon.sh
     - name: Prepare plist file
       run: |
         cat JMDict.plist.in | m4 -DYEAR=$(date +%Y) -DVERSION_DATE=$(date +%Y.%m.%d) > JMDict.plist
