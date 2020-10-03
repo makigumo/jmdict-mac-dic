@@ -1,6 +1,6 @@
 #!/bin/sh -e
-SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Java/SaxonHE10-1J.zip/download
-SAXON=saxon-he-10.1.jar
+SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Java/SaxonHE10-2J.zip/download
+SAXON=saxon-he-10.2.jar
 XML=JMDict_e
 OUT=jmdict.xml
 XSL=jmdict2macos.xsl
