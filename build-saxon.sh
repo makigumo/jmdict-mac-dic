@@ -1,6 +1,6 @@
 #!/bin/sh -e
-SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Java/SaxonHE10-2J.zip/download
-SAXON=saxon-he-10.2.jar
+SAXONURL=https://sourceforge.net/projects/saxon/files/Saxon-HE/10/Java/SaxonHE10-5J.zip/download
+SAXON=saxon-he-10.5.jar
 XML=JMDict_e
 OUT=jmdict.xml
 XSL=jmdict2macos.xsl
@@ -21,12 +21,12 @@ fi
 
 TMP_XML=$(mktemp)
 
-echo "[ ] Pruning entities."
-sed 's/ENTITY \([^ ]*\) ".*"/ENTITY \1 "\1"/' "${XML}" > "${TMP_XML}"
-echo "[+] Pruning entities...done"
+echo "[ ] Expanding entities."
+sed 's?ENTITY \([^ ]*\) "\(.*\)"?ENTITY \1 "<ent tit=\&#34;\2\&#34;>\1</ent>"?' "${XML}" > "${TMP_XML}"
+echo "[+] Expanding entities...done"
 
 echo "[ ] Transforming."
-java -DentityExpansionLimit=2000000 -Xmx1024M -jar "${SAXON}" -s:"${TMP_XML}" -opt:10 -t -xsl:"${XSL}" -o:"${OUT}"
+java -Duser.language=en -DentityExpansionLimit=2000000 -Xmx1024M -jar "${SAXON}" -s:"${TMP_XML}" -opt:10 -t -xsl:"${XSL}" -o:"${OUT}"
 echo "[+] Transforming...done"
 
 echo "[ ] Cleaning up."

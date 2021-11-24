@@ -275,4 +275,11 @@
         </li>
     </xsl:template>
 
+  <!-- custom expanded entity content -->
+  <xsl:template match="ent">
+    <span class="entity" title="{@tit}">
+      <xsl:apply-templates/>
+    </span>
+  </xsl:template>
+
 </xsl:stylesheet>
