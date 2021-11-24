@@ -17,7 +17,7 @@
         <key>DCSDictionaryCopyright</key>
         <string>© Copyright YEAR, Electronic Dictionary Research and Development Group</string>
         <key>DCSDictionaryManufacturerName</key>
-        <string>http://www.edrdg.org/</string>
+        <string>https://www.edrdg.org/</string>
         <key>DCSDictionaryLanguages</key>
         <array>
             <dict>
@@ -29,6 +29,15 @@
         </array>
         <key>DCSDictionaryPrimaryLanguage</key>
         <string>en</string>
+        <key>DCSDictionaryDefaultPrefs</key>
+        <dict>
+            <key>display-entseq</key>
+            <string>0</string>
+        </dict>
+        <key>DCSDictionaryPrefsHTML</key>
+        <string>prefs.xhtml</string>
+        <key>DCSDictionaryXSL</key>
+        <string>pref.xslt</string>
         <key>DCSElementXPath</key>
         <dict>
             <key>pos</key>
