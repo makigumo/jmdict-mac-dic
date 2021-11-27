@@ -9,7 +9,7 @@
   <xsl:param name="display-entseq">0</xsl:param>
 
   <xsl:template match="div[@class='entseq']">
-    <xsl:if test="$display-ent-seq = '1'">
+    <xsl:if test="$display-entseq = '1'">
       <xsl:element name="a">
         <xsl:attribute name="class">ent_seq</xsl:attribute>
         <xsl:attribute name="href">https://www.edrdg.org/jmdictdb/cgi-bin/entr.py?svc=jmdict&amp;Ksid=&amp;q=<xsl:value-of select="."/>
