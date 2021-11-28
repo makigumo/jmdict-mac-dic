@@ -8,7 +8,7 @@
 
   <xsl:param name="display-entseq">0</xsl:param>
 
-  <xsl:template match="div[@class='entseq']">
+  <xsl:template match="div[@class='ent_seq']">
     <xsl:if test="$display-entseq = '1'">
       <xsl:element name="a">
         <xsl:attribute name="class">ent_seq</xsl:attribute>
