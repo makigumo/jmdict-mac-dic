@@ -30,11 +30,14 @@ jobs:
         make
     - name: Package dictionary
       run: |
-        hdiutil create tmp.dmg -ov -volname "JMdict" -fs HFS+ -srcfolder "./objects/JMDict.dictionary"
+        mkdir pkgdir
+        cp -R objects/*.dictionary pkgdir
+        hdiutil create tmp.dmg -ov -volname "JMdict" -fs HFS+ -srcfolder "./pkgdir"
         hdiutil convert tmp.dmg -format UDZO -o JMdict.dmg
     - name: Cleanup
       run: |
         make clean
+        rm -rf pkgdir
         rm tmp.dmg
     - name: Get current date
       id: date
