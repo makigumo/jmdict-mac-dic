@@ -11,54 +11,55 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Clone DDK
-      run: |
-        git clone https://github.com/SebastianSzturo/Dictionary-Development-Kit.git "$HOME"/'Dictionary Development Kit'
-    - name: Rsync JMdict_e
-      run: |
-        ./rsync.sh
-    - name: Transform XML to Apple dictionary XML
-      run: |
-        ./build-saxon.sh
-    - name: Prepare plist file
-      run: |
-        cat JMDict.plist.in | m4 -DYEAR=$(date +%Y) -DVERSION_DATE=$(date +%Y.%m.%d) > JMDict.plist
-    - name: Build dictionary
-      run: |
-        make
-    - name: Package dictionary
-      run: |
-        mkdir pkgdir
-        cp -R objects/*.dictionary pkgdir
-        hdiutil create tmp.dmg -ov -volname "JMdict" -fs HFS+ -srcfolder "./pkgdir"
-        hdiutil convert tmp.dmg -format UDZO -o JMdict.dmg
-    - name: Cleanup
-      run: |
-        make clean
-        rm -rf pkgdir
-        rm tmp.dmg
-    - name: Get current date
-      id: date
-      run: echo "::set-output name=date::$(date +'%Y%m%d')"
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1.0.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ steps.date.outputs.date }}.${{ github.run_id }}
-        release_name: ${{ steps.date.outputs.date }}.${{ github.run_id }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./JMDict.dmg
-        asset_name: JMDict.dmg
-        asset_content_type: application/x-apple-diskimage
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Clone DDK
+        run: |
+          git clone https://github.com/SebastianSzturo/Dictionary-Development-Kit.git "$HOME"/'Dictionary Development Kit'
+      - name: Rsync JMdict_e
+        run: |
+          ./rsync.sh
+      - name: Transform XML to Apple dictionary XML
+        run: |
+          ./build-saxon.sh
+      - name: Prepare plist file
+        run: |
+          cat JMDict.plist.in | m4 -DYEAR=$(date +%Y) -DVERSION_DATE=$(date +%Y.%m.%d) > JMDict.plist
+      - name: Build dictionary
+        run: |
+          make
+      - name: Package dictionary
+        run: |
+          mkdir pkgdir
+          cp -R objects/*.dictionary pkgdir
+          hdiutil create tmp.dmg -ov -volname "JMdict" -fs HFS+ -srcfolder "./pkgdir"
+          hdiutil convert tmp.dmg -format UDZO -o JMdict.dmg
+      - name: Cleanup
+        run: |
+          make clean
+          rm -rf pkgdir
+          rm tmp.dmg
+      - name: Get current date
+        id: date
+        run: |
+          echo "build-date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.date.outputs.build-date }}.${{ github.run_id }}
+          release_name: ${{ steps.date.outputs.build-date }}.${{ github.run_id }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./JMDict.dmg
+          asset_name: JMDict.dmg
+          asset_content_type: application/x-apple-diskimage
