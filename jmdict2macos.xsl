@@ -255,9 +255,6 @@
           <xsl:value-of select="@xml:lang"/>
         </span>
       </xsl:if>
-      <xsl:if test="@ls_type = 'part' and following-sibling::lsource[@ls_type]">
-        <xsl:text> + </xsl:text>
-      </xsl:if>
       <xsl:choose>
         <xsl:when test="@ls_wasei = 'y'">
           <span class="wasei">
@@ -268,7 +265,6 @@
           <xsl:apply-templates/>
         </xsl:otherwise>
       </xsl:choose>
-
     </li>
   </xsl:template>
 
