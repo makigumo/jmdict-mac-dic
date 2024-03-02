@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Clone DDK
         run: |
           git clone https://github.com/SebastianSzturo/Dictionary-Development-Kit.git "$HOME"/'Dictionary Development Kit'
@@ -44,22 +44,10 @@ jobs:
         run: |
           echo "build-date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.date.outputs.build-date }}.${{ github.run_id }}
-          release_name: ${{ steps.date.outputs.build-date }}.${{ github.run_id }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./JMDict.dmg
-          asset_name: JMDict.dmg
-          asset_content_type: application/x-apple-diskimage
+          tag: ${{ steps.date.outputs.build-date }}.${{ github.run_id }}
+          artifacts: "JMDict.dmg"
+          artifactContentType: application/x-apple-diskimage
+          body: "Release of wadoku.de data ${{ steps.date.outputs.release-date }}.\nBuilt on ${{ steps.date.outputs.build-date }}."
+          token: ${{ secrets.GITHUB_TOKEN }}
