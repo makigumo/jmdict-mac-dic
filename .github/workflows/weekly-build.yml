@@ -49,5 +49,5 @@ jobs:
           tag: ${{ steps.date.outputs.build-date }}.${{ github.run_id }}
           artifacts: "JMDict.dmg"
           artifactContentType: application/x-apple-diskimage
-          body: "Release of wadoku.de data ${{ steps.date.outputs.release-date }}.\nBuilt on ${{ steps.date.outputs.build-date }}."
+          body: "Release built from JMDict data ${{ steps.date.outputs.build-date }}."
           token: ${{ secrets.GITHUB_TOKEN }}
